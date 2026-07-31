@@ -1,0 +1,263 @@
+[
+  {
+    "prompt": "Zanima me prodaja čokolade v vseh trgovinah",
+    "representative": true,
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "subset": [
+          "Milka lešnik čokolada",
+          "Milka piškoti s čokolado",
+          "Milka Oreo čokolada",
+          "Milka Alpska mlečna čokolada"
+        ]
+      },
+      {
+        "path": "entity_filters",
+        "not_key": "product_brand"
+      },
+      {
+        "path": "comparison.enabled",
+        "eq": false
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Koliko je bilo prodanih iPhone 15 v Mariboru?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "contains": "iPhone 15"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Maribor"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Kateri AirPods so se prodajali?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "contains": "AirPods Pro"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Prikaži prodajo Penne Rigate testenin",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "contains": "Penne Rigate"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "MacBook Air M2, prodajni podatki za leto 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "contains": "MacBook Air M2"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "iPhon 15 v Celju",
+    "representative": true,
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "contains": "iPhone 15"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Celje"
+      },
+      {
+        "path": "entity_filters",
+        "not_key": "product_brand"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Galxy S24, prodajni podatki",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "contains": "Galaxy S24"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Kaj je z Ajvarjem?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "contains": "Ajvar"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Kakšna je prodaja vegeta začimb?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "contains": "Vegeta začimba"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Prodaja Galaxy Buds slušalk v Kopru",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "contains": "Galaxy Buds slušalke"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Koper"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Koliko iPadov smo prodali?",
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "contains": "iPad 10. generacije"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Prodaja MacBook Air prenosnikov",
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "contains": "MacBook Air M2"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Kako se prodaja Radenska Classic mineralna voda?",
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "contains": "Radenska Classic mineralna voda"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Koliko Monopolyja se je prodalo?",
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "contains": "Monopoly klasična izdaja"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Prodaja iPhona 15 v Celju",
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "contains": "iPhone 15"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Celje"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Galaxy Tab S9, kakšna je bila prodaja?",
+    "expect": [
+      {
+        "path": "entity_filters.product_name",
+        "contains": "Galaxy Tab S9"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  }
+]

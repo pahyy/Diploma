@@ -1,0 +1,353 @@
+[
+  {
+    "prompt": "Kakšna je prodaja elektronike v Mariboru?",
+    "representative": true,
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "electron",
+          "elektron"
+        ]
+      },
+      {
+        "path": "entity_filters",
+        "not_key": "product_brand"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Maribor"
+      },
+      {
+        "path": "comparison.enabled",
+        "eq": false
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Povzemi prodajo hrane za leto 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "food",
+          "hrana"
+        ]
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Zanima me, kako gre igrač, ali so se dobro prodajale?",
+    "representative": false,
+    "expect": [
+      {
+        "any_of": [
+          {
+            "path": "entity_filters.product_category",
+            "contains_any_icase": [
+              "toy",
+              "igr"
+            ]
+          },
+          {
+            "path": "entity_filters.product_name",
+            "contains_any_icase": [
+              "igra"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Analiziraj prodajo oblačil v Celju",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "cloth",
+          "oblač"
+        ]
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Celje"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Koliko pijač je bilo prodanih med prazniki?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "drink",
+          "pijač"
+        ]
+      },
+      {
+        "path": "filters.holiday_season",
+        "eq": "Yes"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Prikaži mesečno prodajo elektronike v letu 2025",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "electron",
+          "elektron"
+        ]
+      },
+      {
+        "path": "date_filter.granularity",
+        "eq": "month"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2025-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Katera znamka oblačil se najboljše prodaja?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "cloth",
+          "oblač"
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Daj mi prodajne podatke za igrače v Kopru v letu 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "toy",
+          "igr"
+        ]
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Koper"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Trend prodaje pijač skozi leto 2023",
+    "representative": true,
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "drink",
+          "pijač"
+        ]
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Primerjaj prodajo hrane in elektronike v Mariboru",
+    "representative": false,
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Prodaja pijač v letu 2023",
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "drink",
+          "pija"
+        ]
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Kako se prodajajo oblačila v Kopru?",
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "cloth",
+          "obla"
+        ]
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Koper"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Povzemi prodajo igrač za lansko leto",
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "toy",
+          "igra"
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Prodaja hrane po mesecih",
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "food",
+          "hrana"
+        ]
+      },
+      {
+        "path": "date_filter.granularity",
+        "eq": "month"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Elektronika v Celju v letu 2025",
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "electron",
+          "elektron"
+        ]
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Celje"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2025-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Prodaja pijač med vikendi",
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "drink",
+          "pija"
+        ]
+      },
+      {
+        "path": "filters.weekend",
+        "eq": "Yes"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  }
+]

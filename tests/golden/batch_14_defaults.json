@@ -1,0 +1,121 @@
+[
+  {
+    "id": "nn_none_string",
+    "func": "normalize_nulls",
+    "representative": true,
+    "input": "none",
+    "expected": null
+  },
+  {
+    "id": "nn_null_string",
+    "func": "normalize_nulls",
+    "representative": false,
+    "input": "null",
+    "expected": null
+  },
+  {
+    "id": "nn_empty_string",
+    "func": "normalize_nulls",
+    "representative": false,
+    "input": "",
+    "expected": null
+  },
+  {
+    "id": "nn_na_string",
+    "func": "normalize_nulls",
+    "representative": false,
+    "input": "n/a",
+    "expected": null
+  },
+  {
+    "id": "nn_real_string_preserved",
+    "func": "normalize_nulls",
+    "representative": false,
+    "input": "Ljubljana",
+    "expected": "Ljubljana"
+  },
+  {
+    "id": "nn_nested_dict",
+    "func": "normalize_nulls",
+    "representative": true,
+    "input": {"city": "none", "year": "2023", "sub": {"x": "null", "y": "hello"}},
+    "expected": {"city": null, "year": "2023", "sub": {"x": null, "y": "hello"}}
+  },
+  {
+    "id": "nn_list_mixed",
+    "func": "normalize_nulls",
+    "representative": false,
+    "input": ["Ljubljana", "none", "", "Maribor"],
+    "expected": ["Ljubljana", null, null, "Maribor"]
+  },
+  {
+    "id": "nn_none_value_is_none",
+    "func": "normalize_nulls",
+    "representative": false,
+    "input": null,
+    "expected": null
+  },
+  {
+    "id": "fq_empty_dict_gets_defaults",
+    "func": "finalize_query",
+    "representative": true,
+    "input": {},
+    "expect": [
+      {"path": "metrics", "truthy": true},
+      {"path": "time", "truthy": true},
+      {"path": "entities", "truthy": true},
+      {"path": "filters", "truthy": true},
+      {"path": "comparison", "truthy": true},
+      {"path": "aggregation", "truthy": true},
+      {"path": "context_reference", "truthy": true}
+    ]
+  },
+  {
+    "id": "fq_known_bug_stores_key",
+    "func": "finalize_query",
+    "representative": false,
+    "input": {},
+    "expect": [
+      {"path": "entities.stores", "truthy": false}
+    ]
+  },
+  {
+    "id": "fq_known_bug_store_location_filter",
+    "func": "finalize_query",
+    "representative": false,
+    "input": {},
+    "expect": [
+      {"path": "filters.store_location", "truthy": false}
+    ]
+  },
+  {
+    "id": "fq_existing_values_preserved",
+    "func": "finalize_query",
+    "representative": false,
+    "input": {"query_type": "sales_query", "intent": "show monthly revenue"},
+    "expect": [
+      {"path": "query_type", "eq": "sales_query"},
+      {"path": "intent", "eq": "show monthly revenue"}
+    ]
+  },
+  {
+    "id": "fq_no_date_mentioned_stays_null",
+    "func": "finalize_query",
+    "representative": false,
+    "input": {},
+    "expect": [
+      {"path": "time.start", "truthy": false},
+      {"path": "time.end", "truthy": false},
+      {"path": "time.type", "truthy": false}
+    ]
+  },
+  {
+    "id": "fq_comparison_disabled_by_default",
+    "func": "finalize_query",
+    "representative": true,
+    "input": {},
+    "expect": [
+      {"path": "comparison.enabled", "eq": false}
+    ]
+  }
+]

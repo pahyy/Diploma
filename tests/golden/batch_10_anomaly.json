@@ -1,0 +1,286 @@
+[
+  {
+    "prompt": "Zakaj je prodaja v oktobru 2023 nenadoma padla?",
+    "representative": true,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-10-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-10-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Ali so v prodaji kakšne nenavadne vrednosti?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Pokaži mi outlierje v podatkih za leto 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Kateri izdelki so imeli neobičajno visoko prodajo v letu 2025?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2025-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Zaznan je bil nenavaden padec prodaje — kaj se je zgodilo?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Anomalije v elektroniki v Kopru — prikaži",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "electron",
+          "elektron"
+        ]
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Koper"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Je prodaja med vikendi kdaj dosegla nenormalne vrednosti v letu 2023?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "filters.weekend",
+        "eq": "Yes"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Daj mi seznam transakcij, ki izstopajo od povprečja",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Nenavaden porast prodaje Milke v marcu 2023 — kaj je bil vzrok?",
+    "representative": true,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "entity_filters.product_brand",
+        "contains_any_icase": [
+          "milka"
+        ]
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-03-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-03-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Prikaži vse statistične anomalije v prodajnih podatkih",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Zaznaj nenavadne skoke v prodaji za leto 2024",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2024-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2024-12-31"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Ali katera trgovina izstopa po nenavadni prodaji?",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Preveri, ali so v prodaji hrane kakšne anomalije",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "food",
+          "hrana"
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Kje so nenadni padci prodaje v Mariboru?",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Maribor"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Pokaži obdobja z neobičajno visoko prodajo",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Je bila prodaja decembra 2024 nenavadno visoka?",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "anomaly_detection"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2024-12-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2024-12-31"
+      }
+    ],
+    "representative": false
+  }
+]

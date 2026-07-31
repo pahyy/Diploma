@@ -1,0 +1,278 @@
+[
+  {
+    "prompt": "Kakšna je prodaja Apple naprav v Ljubljani?",
+    "representative": true,
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "Apple"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Ljubljana"
+      },
+      {
+        "path": "comparison.enabled",
+        "eq": false
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Zanima me, kako gre Milki letos",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "Milka"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Analiziraj prodajne rezultate Hasbra za leto 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "Hasbro"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Koliko LEGO igrač je bilo prodanih v Mariboru?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "LEGO"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Maribor"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Daj mi podatke o prodaji Barille",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "Barilla"
+      },
+      {
+        "path": "comparison.enabled",
+        "eq": false
+      }
+    ]
+  },
+  {
+    "prompt": "Kako dobro se prodajajo LG hladilniki in televizorji?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "LG"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Kakšni so prodajni rezultati Uniqlo oblačil v Celju?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "Uniqlo"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Celje"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Koliko Radenske vode je bilo prodane v Kopru v letu 2023?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "Radenska"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Koper"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Samsung naprave v letu 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "Samsung"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Apl telefoni v Kopru",
+    "representative": true,
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "Apple"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Koper"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Prodaja izdelkov znamke LEGO",
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "LEGO"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Kakšni so prodajni rezultati Samsunga letos?",
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "Samsung"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Prodaja Radenske v Kopru",
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "Radenska"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Koper"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Koliko smo prodali izdelkov znamke Uniqlo v letu 2023?",
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "Uniqlo"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Podravka, kako gre prodaja?",
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "Podravka"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Prodaja Fructala po mesecih v 2025",
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "Fructal"
+      },
+      {
+        "path": "date_filter.granularity",
+        "eq": "month"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2025-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      }
+    ],
+    "representative": false
+  }
+]

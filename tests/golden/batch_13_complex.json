@@ -1,0 +1,523 @@
+[
+  {
+    "prompt": "Prodaja Apple naprav ženskam s kartico zvestobe v Ljubljani v letu 2023",
+    "representative": true,
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains_any_icase": [
+          "apple"
+        ]
+      },
+      {
+        "path": "filters.gender",
+        "eq": "Female"
+      },
+      {
+        "path": "filters.loyalty_program",
+        "eq": "Yes"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Ljubljana"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Kakšna je mesečna prodaja oblačil poročenim moškim z visokimi dohodki v Mariboru?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "cloth",
+          "oblač"
+        ]
+      },
+      {
+        "path": "filters.marital_status",
+        "eq": "Married"
+      },
+      {
+        "path": "filters.gender",
+        "eq": "Male"
+      },
+      {
+        "path": "filters.income_bracket",
+        "eq": "High"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Maribor"
+      },
+      {
+        "path": "date_filter.granularity",
+        "eq": "month"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Primerjaj Zaro in HM po prodaji oblačil ženskam v Celju v letu 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "cloth",
+          "oblač"
+        ]
+      },
+      {
+        "path": "filters.gender",
+        "eq": "Female"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Celje"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Samsung elektronika — prodaja z mobilnim plačilom v Kopru, razvrsti od največje",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains_any_icase": [
+          "samsung"
+        ]
+      },
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "electron",
+          "elektron"
+        ]
+      },
+      {
+        "path": "filters.payment_method",
+        "eq": "Mobile Payment"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Koper"
+      },
+      {
+        "path": "sort_order",
+        "eq": "desc"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Kateri top 5 Samsung telefonov se je prodalo samskim moškim z nizkim dohodkom brez lojalnostne kartice?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains_any_icase": [
+          "samsung"
+        ]
+      },
+      {
+        "path": "filters.marital_status",
+        "eq": "Single"
+      },
+      {
+        "path": "filters.gender",
+        "eq": "Male"
+      },
+      {
+        "path": "filters.income_bracket",
+        "eq": "Low"
+      },
+      {
+        "path": "filters.loyalty_program",
+        "eq": "No"
+      },
+      {
+        "path": "limit",
+        "eq": 5
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Daj mi mesečno primerjavo prodaje Milke in Barille med strankami z doktoratom v letu 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "filters.education_level",
+        "eq": "PhD"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      },
+      {
+        "path": "date_filter.granularity",
+        "eq": "month"
+      }
+    ]
+  },
+  {
+    "prompt": "Prodaja hrane strankam iz Ljubljane, ki plačujejo z gotovino in so odpovedale naročnino",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "food",
+          "hrana"
+        ]
+      },
+      {
+        "path": "filters.payment_method",
+        "eq": "Cash"
+      },
+      {
+        "path": "filters.churned",
+        "eq": "Yes"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Pokaži letno prodajo LEGO igrač z rabatom moškim kupcem v letu 2025 — razvrsti od najnižje",
+    "representative": false,
+    "expect": [
+      {
+        "any_of": [
+          {
+            "path": "entity_filters.product_brand",
+            "contains_any_icase": [
+              "lego"
+            ]
+          },
+          {
+            "path": "entity_filters.product_name",
+            "contains_any_icase": [
+              "lego"
+            ]
+          }
+        ]
+      },
+      {
+        "path": "filters.discount_applied",
+        "truthy": true
+      },
+      {
+        "path": "filters.gender",
+        "eq": "Male"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2025-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      },
+      {
+        "path": "sort_order",
+        "eq": "asc"
+      }
+    ]
+  },
+  {
+    "prompt": "Koliko so porabili kupci s kreditno kartico, poročeni, z diplomo, v Mariboru med prazniki v letu 2023?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "filters.payment_method",
+        "eq": "Credit Card"
+      },
+      {
+        "path": "filters.marital_status",
+        "eq": "Married"
+      },
+      {
+        "path": "filters.education_level",
+        "eq": "Bachelor's"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Maribor"
+      },
+      {
+        "path": "filters.holiday_season",
+        "eq": "Yes"
+      },
+      {
+        "any_of": [
+          {
+            "path": "date_filter.start",
+            "eq": "2023-01-01"
+          },
+          {
+            "path": "date_filter.start",
+            "eq": "2023-12-01"
+          }
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Mesečni trend prodaje Radenske pijač ženskam brez naročnine iz Osrednjeslovenske v letu 2023 — top 3 meseci",
+    "representative": true,
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains_any_icase": [
+          "radenska"
+        ]
+      },
+      {
+        "path": "filters.gender",
+        "eq": "Female"
+      },
+      {
+        "path": "filters.loyalty_program",
+        "eq": "No"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      },
+      {
+        "path": "date_filter.granularity",
+        "eq": "month"
+      },
+      {
+        "path": "limit",
+        "eq": 3
+      }
+    ]
+  },
+  {
+    "prompt": "Prodaja izdelkov Samsung moškim v Ljubljani v letu 2024",
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains_any_icase": [
+          "samsung"
+        ]
+      },
+      {
+        "path": "filters.gender",
+        "eq": "Male"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Ljubljana"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2024-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2024-12-31"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Tedenska prodaja pijač strankam z visokimi dohodki v Kopru v letu 2025",
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "drink",
+          "pija"
+        ]
+      },
+      {
+        "path": "filters.income_bracket",
+        "eq": "High"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Koper"
+      },
+      {
+        "path": "date_filter.granularity",
+        "eq": "week"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2025-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Primerjaj prodajo elektronike med Ljubljano in Celjem za stranke s kartico zvestobe v letu 2023",
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "electron",
+          "elektron"
+        ]
+      },
+      {
+        "path": "filters.loyalty_program",
+        "eq": "Yes"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Prodaja Milkinih izdelkov ženskam med 20 in 35 let",
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains_any_icase": [
+          "milka"
+        ]
+      },
+      {
+        "path": "filters.gender",
+        "eq": "Female"
+      },
+      {
+        "path": "filters.age_min",
+        "eq": 20
+      },
+      {
+        "path": "filters.age_max",
+        "eq": 35
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Koliko so samske stranke z doktoratom porabile za igrače v letu 2024?",
+    "expect": [
+      {
+        "path": "filters.marital_status",
+        "eq": "Single"
+      },
+      {
+        "path": "filters.education_level",
+        "eq": "PhD"
+      },
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "toy",
+          "igra"
+        ]
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2024-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2024-12-31"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Top 5 izdelkov po prodaji med vikendi v Mariboru v letu 2025",
+    "expect": [
+      {
+        "path": "limit",
+        "eq": 5
+      },
+      {
+        "path": "filters.weekend",
+        "eq": "Yes"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Maribor"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2025-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      }
+    ],
+    "representative": false
+  }
+]

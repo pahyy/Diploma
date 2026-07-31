@@ -1,0 +1,278 @@
+[
+  {
+    "prompt": "Prodaja ženskam s kartico zvestobe v Ljubljani",
+    "representative": true,
+    "expect": [
+      {
+        "path": "filters.gender",
+        "eq": "Female"
+      },
+      {
+        "path": "filters.loyalty_program",
+        "eq": "Yes"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Ljubljana"
+      },
+      {
+        "path": "comparison.enabled",
+        "eq": false
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Koliko moški kupci trošijo pri nakupih?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "filters.gender",
+        "eq": "Male"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Prikaži nakupe poročenih strank z visokimi dohodki",
+    "representative": false,
+    "expect": [
+      {
+        "path": "filters.marital_status",
+        "eq": "Married"
+      },
+      {
+        "path": "filters.income_bracket",
+        "eq": "High"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Analiziraj prodajo strankam brez lojalnostnega programa",
+    "representative": false,
+    "expect": [
+      {
+        "path": "filters.loyalty_program",
+        "eq": "No"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Kdo so naši samski kupci? Kakšni so njihovi nakupi?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "filters.marital_status",
+        "eq": "Single"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Prodajni podatki za stranke z doktoratom",
+    "representative": true,
+    "expect": [
+      {
+        "path": "filters.education_level",
+        "eq": "PhD"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Koliko je bilo nakupov z gotovino v Celju?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "filters.payment_method",
+        "eq": "Cash"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Celje"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Je prodaja med vikendi višja kot med tednom?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "filters.weekend",
+        "eq": "Yes"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Stranke, ki so odpovedali naročnino, kakšna je bila njihova prodaja v letu 2023?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "filters.churned",
+        "eq": "Yes"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Nakupi ženskih strank z nizkim dohodkom brez lojalnostne kartice v Kopru",
+    "representative": false,
+    "expect": [
+      {
+        "path": "filters.gender",
+        "eq": "Female"
+      },
+      {
+        "path": "filters.income_bracket",
+        "eq": "Low"
+      },
+      {
+        "path": "filters.loyalty_program",
+        "eq": "No"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Koper"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Prodaja samskim strankam v Celju",
+    "expect": [
+      {
+        "path": "filters.marital_status",
+        "eq": "Single"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Celje"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Koliko trošijo stranke z nizkimi dohodki?",
+    "expect": [
+      {
+        "path": "filters.income_bracket",
+        "eq": "Low"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Nakupi strank z doktoratom",
+    "expect": [
+      {
+        "path": "filters.education_level",
+        "eq": "PhD"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Prodaja strankam, ki so prenehale kupovati pri nas",
+    "expect": [
+      {
+        "path": "filters.churned",
+        "eq": "Yes"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Kaj kupujejo stranke, stare med 30 in 40 let?",
+    "expect": [
+      {
+        "path": "filters.age_min",
+        "eq": 30
+      },
+      {
+        "path": "filters.age_max",
+        "eq": 40
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Prodaja moškim brez kartice zvestobe v Mariboru",
+    "expect": [
+      {
+        "path": "filters.gender",
+        "eq": "Male"
+      },
+      {
+        "path": "filters.loyalty_program",
+        "eq": "No"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Maribor"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  }
+]

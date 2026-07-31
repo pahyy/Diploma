@@ -1,0 +1,302 @@
+[
+  {
+    "prompt": "Kako se je gibala mesečna prodaja v letu 2023?",
+    "representative": true,
+    "expect": [
+      {
+        "path": "metadata.intent",
+        "eq": "trend"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      },
+      {
+        "path": "date_filter.granularity",
+        "eq": "month"
+      },
+      {
+        "path": "comparison.enabled",
+        "eq": false
+      }
+    ]
+  },
+  {
+    "prompt": "Pokaži dnevno prodajo za januar 2024",
+    "representative": false,
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2024-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2024-01-31"
+      },
+      {
+        "path": "date_filter.granularity",
+        "eq": "day"
+      }
+    ]
+  },
+  {
+    "prompt": "Tedenski pregled prodaje v zadnjih treh mesecih",
+    "representative": false,
+    "expect": [
+      {
+        "path": "date_filter.granularity",
+        "eq": "week"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Kateri mesec je bil v letu 2025 prodajno najboljši?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2025-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      },
+      {
+        "path": "comparison.enabled",
+        "eq": false
+      }
+    ]
+  },
+  {
+    "prompt": "Analiziraj, ali je prodaja v Mariboru skozi 2023 naraščala ali padala",
+    "representative": false,
+    "expect": [
+      {
+        "path": "filters.store_city",
+        "eq": "Maribor"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Zanima me trend prodaje elektronike po mesecih v letu 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "electron",
+          "elektron"
+        ]
+      },
+      {
+        "path": "date_filter.granularity",
+        "eq": "month"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Kako so se prodajne številke gibale po tednih v prvem polletju 2023?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-06-30"
+      },
+      {
+        "path": "date_filter.granularity",
+        "eq": "week"
+      }
+    ],
+    "_note": "Trend, week granularity over the FIRST HALF-YEAR (polletje, not poletje/summer) - dates below encode the half-year."
+  },
+  {
+    "prompt": "Daj mi pregled prodajnih trendov od začetka letošnjega leta",
+    "representative": false,
+    "expect": [
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Skupna prodaja za leto 2025",
+    "representative": true,
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2025-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      },
+      {
+        "path": "entity_filters",
+        "truthy": false
+      },
+      {
+        "path": "comparison.enabled",
+        "eq": false
+      }
+    ]
+  },
+  {
+    "prompt": "Razloži, kako se je prodaja Milke gibala skozi leto 2023, ali je rasla ali padala?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "Milka"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Kako se je gibala tedenska prodaja v letu 2025?",
+    "expect": [
+      {
+        "path": "date_filter.granularity",
+        "eq": "week"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2025-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      },
+      {
+        "path": "comparison.enabled",
+        "eq": false
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Pokaži mesečno gibanje prodaje od marca do junija 2023",
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2023-03-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-06-30"
+      },
+      {
+        "path": "date_filter.granularity",
+        "eq": "month"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Dnevna prodaja za december 2025",
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2025-12-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      },
+      {
+        "path": "date_filter.granularity",
+        "eq": "day"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Kakšen je trend prodaje po mesecih v letu 2024?",
+    "expect": [
+      {
+        "path": "metadata.intent",
+        "eq": "trend"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2024-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2024-12-31"
+      },
+      {
+        "path": "date_filter.granularity",
+        "eq": "month"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Prodaja med letoma 2023 in 2025",
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Prodaja v drugem četrtletju 2023 po mesecih",
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2023-04-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-06-30"
+      },
+      {
+        "path": "date_filter.granularity",
+        "eq": "month"
+      }
+    ],
+    "representative": false
+  }
+]

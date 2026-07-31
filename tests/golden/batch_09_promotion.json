@@ -1,0 +1,326 @@
+[
+  {
+    "prompt": "Katera promocija je v letu 2023 prinesla največ prodaje?",
+    "representative": true,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Analiziraj učinkovitost 20% popusta v Mariboru",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "entity_filters.promotion_type",
+        "contains_any_icase": [
+          "20%",
+          "off"
+        ]
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Maribor"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Flash Sale — kako je vplivala na prodajo v decembru 2023?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "entity_filters.promotion_type",
+        "contains_any_icase": [
+          "flash"
+        ]
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-12-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Buy One Get One Free, je bila dobičkonosna?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "entity_filters.promotion_type",
+        "contains_any_icase": [
+          "buy one",
+          "bogo"
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Primerjaj uspešnost različnih promocij v letu 2025",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2025-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Katere akcije so bile uspešne med prazniki?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "filters.holiday_season",
+        "eq": "Yes"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Promocije za ženske stranke, prikaži rezultate",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "filters.gender",
+        "eq": "Female"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Daj mi pregled promocij za igrače v letu 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "toy",
+          "igr"
+        ]
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Koliko so promocije povečale prodajo elektronike?",
+    "representative": true,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "electron",
+          "elektron"
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Zakaj je bila Flash Sale manj uspešna v Kopru kot v Celju?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "entity_filters.promotion_type",
+        "contains_any_icase": [
+          "flash"
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Ali je promocija Buy One Get One Free dvignila prodajo v Ljubljani?",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "entity_filters.promotion_type",
+        "contains_any_icase": [
+          "buy one",
+          "bogo"
+        ]
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Ljubljana"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Katere promocije so imele negativen učinek na prodajo?",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Kakšen je dolgoročni učinek promocij na prodajo?",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Primerjaj prodajo pred in po akciji Flash Sale",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "entity_filters.promotion_type",
+        "contains_any_icase": [
+          "flash"
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Učinkovitost promocij za elektroniko v letu 2023",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "electron",
+          "elektron"
+        ]
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "So bile promocije v Kopru sploh uspešne?",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "promotion_analysis"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Koper"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  }
+]

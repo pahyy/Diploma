@@ -1,0 +1,305 @@
+[
+  {
+    "prompt": "Kateri 5 izdelkov se je v letu 2023 največ prodalo?",
+    "representative": true,
+    "expect": [
+      {
+        "path": "limit",
+        "eq": 5
+      },
+      {
+        "path": "sort_order",
+        "eq": "desc"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Pokaži mi 10 strank z najvišjo skupno porabo",
+    "representative": false,
+    "expect": [
+      {
+        "path": "limit",
+        "eq": 10
+      },
+      {
+        "path": "sort_order",
+        "eq": "desc"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Katera prodajalna ima najslabšo prodajo? Razvrsti od najnižje navzgor",
+    "representative": false,
+    "expect": [
+      {
+        "path": "sort_order",
+        "eq": "asc"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Top 3 znamke po prodaji v Mariboru",
+    "representative": false,
+    "expect": [
+      {
+        "path": "limit",
+        "eq": 3
+      },
+      {
+        "path": "sort_order",
+        "eq": "desc"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Maribor"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Razvrsti kategorije od najboljše do najslabše prodaje v letu 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "sort_order",
+        "eq": "desc"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Daj mi seznam 20 najdražjih nakupov",
+    "representative": false,
+    "expect": [
+      {
+        "path": "limit",
+        "eq": 20
+      },
+      {
+        "path": "sort_order",
+        "eq": "desc"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Kateri mesec v letu 2023 je prinesel največ prihodkov?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "sort_order",
+        "eq": "desc"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Najslabše prodajana elektronika, pokaži spodnjih 5",
+    "representative": true,
+    "expect": [
+      {
+        "path": "limit",
+        "eq": 5
+      },
+      {
+        "path": "sort_order",
+        "eq": "asc"
+      },
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "electron",
+          "elektron"
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Razvrsti prodajalne po prodaji in prikaži top 10",
+    "representative": false,
+    "expect": [
+      {
+        "path": "limit",
+        "eq": 10
+      },
+      {
+        "path": "sort_order",
+        "eq": "desc"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Kateri kupci so zapravili največ, pokaži top 50",
+    "representative": false,
+    "expect": [
+      {
+        "path": "limit",
+        "eq": 50
+      },
+      {
+        "path": "sort_order",
+        "eq": "desc"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Top 3 kategorije po prodaji",
+    "expect": [
+      {
+        "path": "limit",
+        "eq": 3
+      },
+      {
+        "path": "sort_order",
+        "eq": "desc"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Katerih 5 trgovin ima najvišjo prodajo v letu 2023?",
+    "expect": [
+      {
+        "path": "limit",
+        "eq": 5
+      },
+      {
+        "path": "sort_order",
+        "eq": "desc"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Kateri izdelek se je prodal v največji količini?",
+    "expect": [
+      {
+        "path": "metrics",
+        "contains": "quantity"
+      },
+      {
+        "path": "sort_order",
+        "eq": "desc"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "5 najslabše prodajanih izdelkov",
+    "expect": [
+      {
+        "path": "limit",
+        "eq": 5
+      },
+      {
+        "path": "sort_order",
+        "eq": "asc"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Razvrsti kategorije po prodaji od najboljše do najslabše",
+    "expect": [
+      {
+        "path": "sort_order",
+        "eq": "desc"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Top 10 strank po porabi v letu 2025",
+    "expect": [
+      {
+        "path": "limit",
+        "eq": 10
+      },
+      {
+        "path": "sort_order",
+        "eq": "desc"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2025-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      }
+    ],
+    "representative": false
+  }
+]

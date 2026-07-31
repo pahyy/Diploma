@@ -1,0 +1,495 @@
+[
+  {
+    "id": "refine_add_city",
+    "representative": true,
+    "turns": [
+      {
+        "prompt": "Kakšna je bila prodaja Apple naprav v letu 2023?",
+        "expect": [
+          {
+            "path": "entity_filters.product_brand",
+            "contains_any_icase": [
+              "apple"
+            ]
+          },
+          {
+            "path": "date_filter.start",
+            "eq": "2023-01-01"
+          },
+          {
+            "path": "date_filter.end",
+            "eq": "2023-12-31"
+          }
+        ]
+      },
+      {
+        "prompt": "Prikaži samo za Maribor",
+        "expect_parsed": [
+          {
+            "path": "context_reference.use_previous_query",
+            "eq": true
+          }
+        ],
+        "expect": [
+          {
+            "path": "entity_filters.product_brand",
+            "contains_any_icase": [
+              "apple"
+            ]
+          },
+          {
+            "path": "filters.store_city",
+            "eq": "Maribor"
+          },
+          {
+            "path": "date_filter.start",
+            "eq": "2023-01-01"
+          },
+          {
+            "path": "date_filter.end",
+            "eq": "2023-12-31"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "override_year",
+    "representative": false,
+    "turns": [
+      {
+        "prompt": "Skupna prodaja Milke v letu 2025",
+        "expect": [
+          {
+            "path": "entity_filters.product_brand",
+            "contains_any_icase": [
+              "milka"
+            ]
+          },
+          {
+            "path": "date_filter.start",
+            "eq": "2025-01-01"
+          },
+          {
+            "path": "date_filter.end",
+            "eq": "2025-12-31"
+          }
+        ]
+      },
+      {
+        "prompt": "Ne, mislil sem 2023",
+        "expect_parsed": [
+          {
+            "path": "context_reference.use_previous_query",
+            "eq": true
+          }
+        ],
+        "expect": [
+          {
+            "path": "entity_filters.product_brand",
+            "contains_any_icase": [
+              "milka"
+            ]
+          },
+          {
+            "path": "date_filter.start",
+            "eq": "2023-01-01"
+          },
+          {
+            "path": "date_filter.end",
+            "eq": "2023-12-31"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "extend_add_gender",
+    "representative": false,
+    "turns": [
+      {
+        "prompt": "Prodaja oblačil v Ljubljani v letu 2023",
+        "expect": [
+          {
+            "path": "entity_filters.product_category",
+            "contains_any_icase": [
+              "cloth",
+              "oblač"
+            ]
+          },
+          {
+            "path": "filters.store_city",
+            "eq": "Ljubljana"
+          },
+          {
+            "path": "date_filter.start",
+            "eq": "2023-01-01"
+          },
+          {
+            "path": "date_filter.end",
+            "eq": "2023-12-31"
+          }
+        ]
+      },
+      {
+        "prompt": "Samo ženske stranke",
+        "expect_parsed": [
+          {
+            "path": "context_reference.use_previous_query",
+            "eq": true
+          }
+        ],
+        "expect": [
+          {
+            "path": "entity_filters.product_category",
+            "contains_any_icase": [
+              "cloth",
+              "oblač"
+            ]
+          },
+          {
+            "path": "filters.store_city",
+            "eq": "Ljubljana"
+          },
+          {
+            "path": "filters.gender",
+            "eq": "Female"
+          },
+          {
+            "path": "date_filter.start",
+            "eq": "2023-01-01"
+          },
+          {
+            "path": "date_filter.end",
+            "eq": "2023-12-31"
+          }
+        ]
+      },
+      {
+        "prompt": "Pokaži samo tiste z lojalnostno kartico",
+        "expect_parsed": [
+          {
+            "path": "context_reference.use_previous_query",
+            "eq": true
+          }
+        ],
+        "expect": [
+          {
+            "path": "entity_filters.product_category",
+            "contains_any_icase": [
+              "cloth",
+              "oblač"
+            ]
+          },
+          {
+            "path": "filters.store_city",
+            "eq": "Ljubljana"
+          },
+          {
+            "path": "filters.gender",
+            "eq": "Female"
+          },
+          {
+            "path": "filters.loyalty_program",
+            "eq": "Yes"
+          },
+          {
+            "path": "date_filter.start",
+            "eq": "2023-01-01"
+          },
+          {
+            "path": "date_filter.end",
+            "eq": "2023-12-31"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "override_city",
+    "representative": false,
+    "turns": [
+      {
+        "prompt": "Prodaja Samsung naprav v Celju",
+        "_note": "Turn 1: brand + city",
+        "expect": [
+          {
+            "path": "entity_filters.product_brand",
+            "contains_any_icase": [
+              "samsung"
+            ]
+          },
+          {
+            "path": "filters.store_city",
+            "eq": "Celje"
+          }
+        ]
+      },
+      {
+        "prompt": "Pravzaprav, Koper me zanima",
+        "expect_parsed": [
+          {
+            "path": "context_reference.use_previous_query",
+            "eq": true
+          }
+        ],
+        "expect": [
+          {
+            "path": "entity_filters.product_brand",
+            "contains_any_icase": [
+              "samsung"
+            ]
+          },
+          {
+            "path": "filters.store_city",
+            "eq": "Koper"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "refine_narrow_date",
+    "representative": true,
+    "turns": [
+      {
+        "prompt": "Skupna prodaja za leto 2023",
+        "expect": [
+          {
+            "path": "date_filter.start",
+            "eq": "2023-01-01"
+          },
+          {
+            "path": "date_filter.end",
+            "eq": "2023-12-31"
+          },
+          {
+            "path": "entity_filters",
+            "truthy": false
+          }
+        ]
+      },
+      {
+        "prompt": "Zoži samo na tretji kvartal",
+        "expect_parsed": [
+          {
+            "path": "context_reference.use_previous_query",
+            "eq": true
+          }
+        ],
+        "expect": [
+          {
+            "path": "date_filter.start",
+            "eq": "2023-07-01"
+          },
+          {
+            "path": "date_filter.end",
+            "eq": "2023-09-30"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "extend_add_comparison",
+    "representative": false,
+    "turns": [
+      {
+        "prompt": "Prodaja hrane v Kopru v letu 2023",
+        "expect": [
+          {
+            "path": "entity_filters.product_category",
+            "contains_any_icase": [
+              "food",
+              "hrana"
+            ]
+          },
+          {
+            "path": "filters.store_city",
+            "eq": "Koper"
+          },
+          {
+            "path": "date_filter.start",
+            "eq": "2023-01-01"
+          },
+          {
+            "path": "date_filter.end",
+            "eq": "2023-12-31"
+          }
+        ]
+      },
+      {
+        "prompt": "Primerjaj to še z Mariborom",
+        "expect_parsed": [
+          {
+            "path": "context_reference.use_previous_query",
+            "eq": true
+          }
+        ],
+        "expect": [
+          {
+            "path": "entity_filters.product_category",
+            "contains_any_icase": [
+              "food",
+              "hrana"
+            ]
+          },
+          {
+            "path": "comparison.enabled",
+            "eq": true
+          },
+          {
+            "path": "date_filter.start",
+            "eq": "2023-01-01"
+          },
+          {
+            "path": "date_filter.end",
+            "eq": "2023-12-31"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "fresh_query_breaks_context",
+    "representative": false,
+    "turns": [
+      {
+        "prompt": "Prodaja igrač v letu 2025",
+        "_note": "Turn 1: category + year",
+        "expect": [
+          {
+            "path": "entity_filters.product_category",
+            "contains_any_icase": [
+              "toy",
+              "igr"
+            ]
+          },
+          {
+            "path": "date_filter.start",
+            "eq": "2025-01-01"
+          },
+          {
+            "path": "date_filter.end",
+            "eq": "2025-12-31"
+          }
+        ]
+      },
+      {
+        "prompt": "Katera so top 5 Apple mest v letu 2023?",
+        "expect_parsed": [
+          {
+            "path": "context_reference.use_previous_query",
+            "eq": false
+          }
+        ],
+        "expect": [
+          {
+            "path": "entity_filters.product_brand",
+            "contains_any_icase": [
+              "apple"
+            ]
+          },
+          {
+            "path": "date_filter.start",
+            "eq": "2023-01-01"
+          },
+          {
+            "path": "date_filter.end",
+            "eq": "2023-12-31"
+          },
+          {
+            "path": "limit",
+            "eq": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "override_city_keep_category",
+    "representative": false,
+    "turns": [
+      {
+        "prompt": "Prodaja pijač v Ljubljani v letu 2024",
+        "expect": [
+          {
+            "path": "entity_filters.product_category",
+            "contains_any_icase": [
+              "drink",
+              "pija"
+            ]
+          },
+          {
+            "path": "filters.store_city",
+            "eq": "Ljubljana"
+          },
+          {
+            "path": "date_filter.start",
+            "eq": "2024-01-01"
+          }
+        ]
+      },
+      {
+        "prompt": "Ne, mislil sem v Celju",
+        "expect_parsed": [
+          {
+            "path": "context_reference.use_previous_query",
+            "eq": true
+          }
+        ],
+        "expect": [
+          {
+            "path": "filters.store_city",
+            "eq": "Celje"
+          },
+          {
+            "path": "entity_filters.product_category",
+            "contains_any_icase": [
+              "drink",
+              "pija"
+            ]
+          },
+          {
+            "path": "date_filter.start",
+            "eq": "2024-01-01"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "extend_into_promotion_analysis",
+    "representative": false,
+    "turns": [
+      {
+        "prompt": "Kakšna je bila prodaja čokolade v letu 2024?",
+        "expect": [
+          {
+            "path": "entity_filters.product_name",
+            "contains_icase": "čokolada"
+          },
+          {
+            "path": "date_filter.start",
+            "eq": "2024-01-01"
+          }
+        ]
+      },
+      {
+        "prompt": "Ali so promocije vplivale nanjo?",
+        "expect_parsed": [
+          {
+            "path": "context_reference.use_previous_query",
+            "eq": true
+          }
+        ],
+        "expect": [
+          {
+            "path": "metadata.query_type",
+            "eq": "promotion_analysis"
+          }
+        ]
+      }
+    ]
+  }
+]

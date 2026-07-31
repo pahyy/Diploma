@@ -1,0 +1,306 @@
+[
+  {
+    "prompt": "Kakšna je bila prodaja v letu 2023?",
+    "representative": true,
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      },
+      {
+        "path": "date_filter.column",
+        "eq": "transaction_date"
+      },
+      {
+        "path": "entity_filters",
+        "truthy": false
+      },
+      {
+        "path": "comparison.enabled",
+        "eq": false
+      }
+    ]
+  },
+  {
+    "prompt": "Prikaži prodajo od 1. januarja do 31. marca 2024",
+    "representative": false,
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2024-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2024-03-31"
+      },
+      {
+        "path": "date_filter.column",
+        "eq": "transaction_date"
+      },
+      {
+        "path": "entity_filters",
+        "truthy": false
+      }
+    ]
+  },
+  {
+    "prompt": "Prodaja v januarju 2024",
+    "representative": false,
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2024-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2024-01-31"
+      },
+      {
+        "path": "entity_filters",
+        "truthy": false
+      }
+    ]
+  },
+  {
+    "prompt": "Koliko smo prodali lani?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "date_filter",
+        "loose_date": true
+      },
+      {
+        "path": "entity_filters",
+        "truthy": false
+      },
+      {
+        "path": "comparison.enabled",
+        "eq": false
+      }
+    ]
+  },
+  {
+    "prompt": "Kakšni so bili rezultati prodaje prejšnjega meseca?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "date_filter",
+        "loose_date": true
+      },
+      {
+        "path": "entity_filters",
+        "truthy": false
+      }
+    ]
+  },
+  {
+    "prompt": "Letna prodaja za leto 2025",
+    "representative": true,
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2025-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      },
+      {
+        "any_of": [
+          {
+            "path": "date_filter.granularity",
+            "eq": "year"
+          },
+          {
+            "path": "date_filter.granularity",
+            "eq": "month"
+          }
+        ]
+      },
+      {
+        "path": "entity_filters",
+        "truthy": false
+      }
+    ]
+  },
+  {
+    "prompt": "Prodaja v prvem kvartalu 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-03-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Prodaja v decembru 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2023-12-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      },
+      {
+        "path": "entity_filters",
+        "truthy": false
+      }
+    ]
+  },
+  {
+    "prompt": "Pokaži prodajne rezultate za prvo polletje 2024",
+    "representative": false,
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2024-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2024-06-30"
+      },
+      {
+        "path": "entity_filters",
+        "truthy": false
+      }
+    ]
+  },
+  {
+    "prompt": "Prodaja v zadnjih 6 mesecih, prikaži pregled",
+    "representative": false,
+    "expect": [
+      {
+        "path": "date_filter",
+        "loose_date": true
+      },
+      {
+        "path": "entity_filters",
+        "truthy": false
+      },
+      {
+        "path": "comparison.enabled",
+        "eq": false
+      }
+    ]
+  },
+  {
+    "prompt": "Prodaja od maja do avgusta 2025",
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2025-05-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-08-31"
+      },
+      {
+        "path": "entity_filters",
+        "truthy": false
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Kakšna je bila prodaja v prvem četrtletju 2023?",
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-03-31"
+      },
+      {
+        "path": "entity_filters",
+        "truthy": false
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Prodaja v zadnjih šestih mesecih",
+    "expect": [
+      {
+        "path": "date_filter",
+        "loose_date": true
+      },
+      {
+        "path": "entity_filters",
+        "truthy": false
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Prodaja za februar 2024",
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2024-02-01"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      },
+      {
+        "any_of": [
+          {
+            "path": "date_filter.end",
+            "eq": "2024-02-29"
+          },
+          {
+            "path": "date_filter.end",
+            "eq": "2024-02-28"
+          }
+        ]
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Kakšna je bila prodaja predlanskim?",
+    "expect": [
+      {
+        "path": "date_filter",
+        "loose_date": true
+      },
+      {
+        "path": "entity_filters",
+        "truthy": false
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Prodaja v novembru 2024",
+    "expect": [
+      {
+        "path": "date_filter.start",
+        "eq": "2024-11-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2024-11-30"
+      },
+      {
+        "path": "entity_filters",
+        "truthy": false
+      }
+    ],
+    "representative": false
+  }
+]

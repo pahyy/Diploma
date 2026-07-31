@@ -1,0 +1,346 @@
+[
+  {
+    "prompt": "Primerjaj mesečno prodajo med Ljubljano in Mariborom v letu 2023",
+    "representative": true,
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "comparison.groups",
+        "subset_labels": [
+          "Ljubljana",
+          "Maribor"
+        ]
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Kateri med Samsung in Apple se bolje prodaja v Celju?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Katera kategorija prinaša več prodaje, hrana ali elektrika?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Kje je bila prodaja višja lani, v Kopru ali Celju?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "comparison.groups",
+        "subset_labels": [
+          "Koper",
+          "Celje"
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Primerjaj prodajo v Osrednjeslovenski in Podravski regiji v letu 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Katera prodajalna je imela boljšo prodajo: Ljubljana BTC City ali Maribor Europark?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Ali se Barilla bolje prodaja na zahodu ali na vzhodu države?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Kdo je boljši: LEGO ali Hasbro. Primerjaj njuno prodajo v letu 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Ali med Koprom in Celjem obstaja pomembna razlika v prodaji elektronike?",
+    "representative": true,
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "comparison.groups",
+        "subset_labels": [
+          "Koper",
+          "Celje"
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Primerjaj prodajo med Ljubljano, Mariborom in Celjem v letu 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 3
+      },
+      {
+        "path": "comparison.groups",
+        "subset_labels": [
+          "Ljubljana",
+          "Maribor",
+          "Celje"
+        ]
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Primerjaj prodajo v Kopru in Celju",
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "comparison.groups",
+        "subset_labels": [
+          "Koper",
+          "Celje"
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Ali se v Ljubljani proda več kot v Mariboru?",
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Primerjava prodaje med moškimi in ženskami",
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Kdo proda več igrač: Ljubljana ali Koper?",
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Primerjaj prodajo Milke in Barille v letu 2023",
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Primerjaj prodajo med vikendi in delovniki",
+    "expect": [
+      {
+        "path": "comparison.enabled",
+        "eq": true
+      },
+      {
+        "path": "comparison.groups",
+        "count": 2
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  }
+]

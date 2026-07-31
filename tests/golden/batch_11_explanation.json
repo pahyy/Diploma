@@ -1,0 +1,319 @@
+[
+  {
+    "prompt": "Zakaj je prodaja v Mariboru nižja kot v Ljubljani?",
+    "representative": true,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "explain"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Razloži mi, kako se je prodaja elektronike razvijala skozi leto 2023",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "explain"
+      },
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "electron",
+          "elektron"
+        ]
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Kaj je vzrok za padec prodaje v novembru 2023?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "explain"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-11-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-11-30"
+      }
+    ]
+  },
+  {
+    "prompt": "Pojasnite, zakaj stranke s kreditnimi karticami kupujejo pogosteje",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "explain"
+      },
+      {
+        "path": "filters.payment_method",
+        "eq": "Credit Card"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Kako razlagaš visoko prodajo Milke v decembru 2023?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "explain"
+      },
+      {
+        "path": "entity_filters.product_brand",
+        "contains_any_icase": [
+          "milka"
+        ]
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2023-12-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2023-12-31"
+      }
+    ]
+  },
+  {
+    "prompt": "Vzrok za visoko prodajo, pojasni",
+    "representative": true,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "explain"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Zakaj ženske stranke pogosteje kupujejo oblačila kot moški?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "explain"
+      },
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "cloth",
+          "oblač"
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Daj mi razlago, zakaj je Q4 vedno najboljši kvartal",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "explain"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Ali veš, zakaj se Pepsico pijače prodajajo slabše pozimi?",
+    "representative": false,
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "explain"
+      },
+      {
+        "path": "entity_filters.product_brand",
+        "contains_any_icase": [
+          "pepsi"
+        ]
+      },
+      {
+        "path": "filters.season",
+        "eq": "Winter"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Razloži razliko v prodaji med strankami z visokimi in nizkimi dohodki",
+    "representative": false,
+    "expect": [
+      {
+        "any_of": [
+          {
+            "path": "metadata.query_type",
+            "eq": "explain"
+          },
+          {
+            "path": "metadata.query_type",
+            "eq": "comparison"
+          },
+          {
+            "path": "metadata.query_type",
+            "eq": "customer_analysis"
+          }
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ]
+  },
+  {
+    "prompt": "Razloži mi prodajne rezultate za leto 2025",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "explain"
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2025-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2025-12-31"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Pojasni, kako so se obnesle trgovine v Ljubljani",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "explain"
+      },
+      {
+        "path": "filters.store_city",
+        "eq": "Ljubljana"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Zakaj ženske kupujejo več oblačil kot moški?",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "explain"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Razloži gibanje prodaje pijač skozi leto 2024",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "explain"
+      },
+      {
+        "path": "entity_filters.product_category",
+        "contains_any_icase": [
+          "drink",
+          "pija"
+        ]
+      },
+      {
+        "path": "date_filter.start",
+        "eq": "2024-01-01"
+      },
+      {
+        "path": "date_filter.end",
+        "eq": "2024-12-31"
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Pojasni, kaj se dogaja s prodajo Radenske",
+    "expect": [
+      {
+        "path": "metadata.query_type",
+        "eq": "explain"
+      },
+      {
+        "path": "entity_filters.product_brand",
+        "contains": "Radenska"
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  },
+  {
+    "prompt": "Interpretiraj prodajne trende za zadnje leto",
+    "expect": [
+      {
+        "any_of": [
+          {
+            "path": "metadata.query_type",
+            "eq": "explain"
+          },
+          {
+            "path": "metadata.intent",
+            "eq": "explain"
+          },
+          {
+            "path": "metadata.intent",
+            "eq": "trend"
+          }
+        ]
+      },
+      {
+        "path": "date_filter",
+        "loose_date": true
+      }
+    ],
+    "representative": false
+  }
+]

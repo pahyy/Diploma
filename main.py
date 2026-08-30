@@ -13,6 +13,10 @@ from agent.validation.response_validator import ResponseValidator
 from agent.visualization.visualizer import Visualizer
 from agent.response.response_formatter import ResponseFormatter
 
+# How many times the summary may be regenerated when validation flags a number.
+# The last attempt is returned with a warning even if it still fails.
+MAX_SUMMARY_ATTEMPTS = 3
+
 
 class RetailAnalyticsHub:
     """
@@ -124,9 +128,20 @@ class RetailAnalyticsHub:
         # 4. Chart, ce je smiselno da ima
         chart_path = self.visualizer.create_chart(aggregated, final_params)
 
-        # 5. Sumarizacija podatkov (LLM call #2) in validacija podatkov
-        summary = self.summary_generator.generate(user_input, final_params, aggregated)
-        validation = self.validator.validate(summary, aggregated["analysis"])
+        # 5. Sumarizacija podatkov (LLM call #2) in validacija podatkov.
+        # Ce validacija ne uspe, se povzetek ponovi z navedbo neutemeljenih stevil.
+        # Preverja deterministicna komponenta, ponavlja pa model - detekcija zato
+        # ostane neodvisna od tega, kar popravlja.
+        unverified = None
+        for attempt in range(1, MAX_SUMMARY_ATTEMPTS + 1):
+            summary = self.summary_generator.generate(user_input, final_params,
+                                                      aggregated, unverified=unverified)
+            validation = self.validator.validate(summary, aggregated, final_params)
+            if validation["valid"]:
+                break
+            unverified = validation["unverified"]
+            print(f"Summary attempt {attempt}/{MAX_SUMMARY_ATTEMPTS} "
+                  f"failed validation: {unverified}")
 
         # 6. Pack everything into the final response
         # 6. Formatiranje vsega v odgovor

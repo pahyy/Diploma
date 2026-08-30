@@ -33,7 +33,11 @@ PRAVILA:
 7. Če rezultati vsebujejo imena (izdelkov, trgovin, kategorij, znamk), jih v odgovoru IZRECNO poimenuj - "najbolje se je prodajal iPhone 15", ne "nek izdelek". Če rezultat imena nima, ne trdi, da gre za posamezen izdelek/trgovino.
 8. Odgovor naj ima manj kot 150 besed."""
 
-    def generate(self, user_question: str, params: dict, aggregated: dict) -> str:
+    RETRY_PROMPT = """Prejšnji poskus je vseboval števila, ki jih ni bilo mogoče najti v podanih rezultatih: {numbers}.
+Povzetek napiši znova in uporabi izključno števila iz podanega JSON-a. Zaokroževanje in berljiv zapis (pravilo 2) ostaneta v veljavi, ne uvajaj pa vrednosti, ki jih v rezultatih ni. Če kakšne številke v rezultatih ni, je v povzetku ne navajaj."""
+
+    def generate(self, user_question: str, params: dict, aggregated: dict,
+                 unverified: list = None) -> str:
         payload = {
             "vprasanje_uporabnika": user_question,
             "tip_analize": params["metadata"]["query_type"],
@@ -42,13 +46,20 @@ PRAVILA:
         if aggregated.get("supporting"):
             payload["dodatni_rezultati"] = shrink_for_prompt(aggregated["supporting"])
 
+        messages = [
+            {"role": "system", "content": self.SYSTEM_PROMPT},
+            {"role": "user", "content": json.dumps(payload, ensure_ascii=False, indent=2)},
+        ]
+        # Retry: name the numbers the validator could not ground, instead of just
+        # asking again and hoping temperature 0.2 lands somewhere better.
+        if unverified:
+            messages.append({"role": "user", "content": self.RETRY_PROMPT.format(
+                numbers=", ".join(unverified))})
+
         try:
             response = self.client.chat.completions.create(
                 model=self.model,
-                messages=[
-                    {"role": "system", "content": self.SYSTEM_PROMPT},
-                    {"role": "user", "content": json.dumps(payload, ensure_ascii=False, indent=2)},
-                ],
+                messages=messages,
                 temperature=0.2,
                 max_tokens=500,
                 safety_identifier=self.safety_identifier or None,

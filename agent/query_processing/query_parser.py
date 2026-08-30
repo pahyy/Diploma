@@ -1,4 +1,5 @@
 import json
+import logging
 import openai
 import os
 import re
@@ -6,6 +7,8 @@ from datetime import datetime
 from dotenv import load_dotenv
 
 from agent.query_processing.parameter_extractor import ParameterExtractor
+
+logger = logging.getLogger(__name__)
 
 load_dotenv()
 
@@ -246,6 +249,13 @@ class RetailQueryParser:
             )
 
             raw_content = response.choices[0].message.content
+            # finish_reason == "length" means the answer was cut off at max_tokens,
+            # which produces malformed JSON. Without it a truncated answer is
+            # indistinguishable from the model simply emitting bad JSON.
+            finish_reason = response.choices[0].finish_reason
+            if finish_reason != "stop":
+                logger.warning("LLM stopped with finish_reason=%r (%d chars returned)",
+                               finish_reason, len(raw_content or ""))
             parsed_json = json.loads(raw_content)
             
             # Cleaning up the json with preset defaults
@@ -266,7 +276,8 @@ class RetailQueryParser:
             return clean_json
 
         except Exception as e:
-            return {"error" : f"Parser failed: {str(e)}"}
+            reason = locals().get("finish_reason", "unknown")
+            return {"error": f"Parser failed: {str(e)} (finish_reason={reason})"}
 
 
 from datetime import datetime

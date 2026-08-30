@@ -106,6 +106,35 @@ def test_trend_is_omitted_when_a_second_dimension_is_grouped_with_the_period(sam
     assert "trend" not in result
 
 
+def test_single_period_yields_one_record_and_no_trend(sample_df):
+    # January 2023 alone: tx 1, 2 and 7 -> 100 + 200 + 120 = 420.
+    analyzer = SalesAnalyzer(sample_df)
+    params = make_params(
+        date_filter={"column": "transaction_date", "start": "2023-01-01", "end": "2023-01-31", "granularity": "month"},
+        metadata={"query_type": "sales_trend", "intent": "trend"},
+    )
+
+    result = analyzer.analyze(params)
+
+    assert result["row_count"] == 3
+    assert result["results"] == [{"_period": "2023-01", "total_sales": 420.0}]
+    assert "trend" not in result
+
+
+def test_trend_is_omitted_for_fewer_than_three_periods(sample_df):
+    # Two periods only: a line through two points is always perfect, so no trend.
+    analyzer = SalesAnalyzer(sample_df)
+    params = make_params(
+        date_filter={"column": "transaction_date", "start": "2023-01-01", "end": "2023-02-28", "granularity": "month"},
+        metadata={"query_type": "sales_trend", "intent": "trend"},
+    )
+
+    result = analyzer.analyze(params)
+
+    assert [row["_period"] for row in result["results"]] == ["2023-01", "2023-02"]
+    assert "trend" not in result
+
+
 def test_group_by_category_matches_manual_sums(sample_df):
     analyzer = SalesAnalyzer(sample_df)
     params = make_params(metrics=["total_sales", "quantity"], group_by=["product_category"])

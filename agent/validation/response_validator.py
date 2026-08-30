@@ -15,8 +15,15 @@ IGNORE_BELOW = 11
 
 class ResponseValidator:
 
-    def validate(self, summary_text: str, analysis: dict) -> dict:
+    def validate(self, summary_text: str, analysis: dict, params: dict = None) -> dict:
         known = collect_numbers(analysis)
+        if params is not None:
+            # Validated inputs count as known values too. A summary that echoes the
+            # period or age range the user asked about ("v letu 2024") is not making
+            # anything up, but the year only appears in the analysis when the result
+            # happens to carry _period labels - so on a summarize query it would be
+            # reported as unverified.
+            known |= collect_numbers(params)
         found = extract_numbers(summary_text)
 
         unverified = []

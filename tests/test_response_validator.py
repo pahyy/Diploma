@@ -51,6 +51,17 @@ def test_dates_in_results_ground_dates_in_summary(validator):
     assert result["valid"] is True
 
 
+def test_year_from_params_grounds_a_summary_without_periods(validator):
+    # A summarize query returns no _period labels, so the year the user asked
+    # about is nowhere in the analysis and used to be reported as unverified.
+    analysis = {"row_count": 165631, "results": [{"total_sales": 16250000.0}]}
+    params = {"date_filter": {"start": "2024-01-01", "end": "2024-12-31"}}
+    summary = "V letu 2024 je prodaja znašala 16,25 milijona €."
+
+    assert validator.validate(summary, analysis)["unverified"] == ["2024"]
+    assert validator.validate(summary, analysis, params)["valid"] is True
+
+
 def test_collect_numbers_reads_numbers_inside_strings():
     numbers = collect_numbers({"period": "2024-03-15"})
     assert {2024.0, 3.0, 15.0} <= numbers
